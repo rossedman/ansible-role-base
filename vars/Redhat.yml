@@ -7,10 +7,10 @@ general_packages:
   - make
   - unzip
   - wget
-
 shell_editors:
   - vim-X11
   - vim-common
   - vim-enhanced
   - vim-minimal
   - nano
+update_type: security

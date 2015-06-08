@@ -1,0 +1,6 @@
+---
+- name: start yum cron
+  service: name=yum-cron state=started
+
+- name: restart yum cron
+  service: name=yum-cron state=restarted

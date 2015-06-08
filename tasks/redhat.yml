@@ -9,3 +9,14 @@
 - name: install base shell editors
   yum: name={{ item }} state=present update_cache=yes
   with_items: "{{ shell_editors }}"
+
+- name: install automatic updates
+  yum: name=yum-cron state=present update_cache=yes
+
+- name: add update configuration
+  template: src=yum.conf dest=/etc/yum/yum.conf owner=root group=root
+
+- name: activate cron updates
+  sudo: yes
+  shell: chkconfig --level 345 yum-cron on
+  notify: start yum cron
