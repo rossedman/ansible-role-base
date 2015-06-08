@@ -1,0 +1,16 @@
+---
+general_packages:
+  - curl
+  - git
+  - git-core
+  - gcc
+  - make
+  - unzip
+  - wget
+
+shell_editors:
+  - vim-X11
+  - vim-common
+  - vim-enhanced
+  - vim-minimal
+  - nano

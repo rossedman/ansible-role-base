@@ -1,0 +1,11 @@
+---
+- name: install development tools
+  yum: name="@Development tools" state=present
+
+- name: install base
+  yum: name={{ item }} state=present update_cache=yes
+  with_items: "{{ general_packages }}"
+
+- name: install base shell editors
+  yum: name={{ item }} state=present update_cache=yes
+  with_items: "{{ shell_editors }}"

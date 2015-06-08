@@ -1,0 +1,15 @@
+---
+general_packages:
+  - build-essential
+  - curl
+  - git
+  - git-core
+  - gcc
+  - make
+  - unattended-upgrades
+  - unzip
+  - wget
+
+shell_editors:
+  - nano
+  - vim
