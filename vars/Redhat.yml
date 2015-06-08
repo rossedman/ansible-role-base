@@ -6,6 +6,7 @@ general_packages:
   - gcc
   - libselinux-python
   - make
+  - ntp
   - unzip
   - wget
 shell_editors:
