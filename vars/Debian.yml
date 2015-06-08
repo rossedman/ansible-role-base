@@ -7,9 +7,15 @@ general_packages:
   - gcc
   - make
   - unattended-upgrades
+  - update-notifier-common
   - unzip
   - wget
-
 shell_editors:
   - nano
+  - vim
+update_security: true
+update_updates: false
+update_proposed: false
+update_backports: false
+update_blacklist:
   - vim

@@ -7,6 +7,8 @@
 - name: install base shell editors
   apt: name={{ item }} state=present update_cache=yes
   with_items: "{{ shell_editors }}"
-  tags: packags, editors
+  tags: packages, editors
 
-# configure unattended upgrades
+- name: configure unattended updates
+  template: src=50unattended-upgrades dest=/etc/apt/apt.conf.d/50unattended-upgrades owner=root group=root
+  tags: updates

@@ -1,0 +1,25 @@
+// Automatically upgrade packages from these (origin:archive) pairs
+Unattended-Upgrade::Allowed-Origins {
+{% if update_security %}
+  "${distro_id}:${distro_codename}-security";
+{% endif %}
+{% if update_updates %}
+  "${distro_id}:${distro_codename}-updates";
+{% endif %}
+{% if update_proposed %}
+  "${distro_id}:${distro_codename}-proposed";
+{% endif %}
+{% if update_backports %}
+  "${distro_id}:${distro_codename}-backports";
+{% endif %}
+};
+
+// List of packages to not update (regexp are supported)
+Unattended-Upgrade::Package-Blacklist {
+{% for package in update_blacklist) %}
+  "{{ package }}";
+{% endfor %}
+};
+
+// Reboot on system startup
+Unattended-Upgrade::Automatic-Reboot "true"

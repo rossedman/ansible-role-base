@@ -18,7 +18,7 @@
   tags: updates
 
 - name: add update configuration
-  template: src=yum.conf dest=/etc/yum/yum.conf owner=root group=root
+  template: src=yum-cron.conf dest=/etc/yum/yum-cron.conf owner=root group=root
   tags: updates
 
 - name: activate cron updates
