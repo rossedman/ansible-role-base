@@ -20,6 +20,3 @@ Unattended-Upgrade::Package-Blacklist {
   "{{ package }}";
 {% endfor %}
 };
-
-// Reboot on system startup
-Unattended-Upgrade::Automatic-Reboot "true"
