@@ -1,0 +1,27 @@
+---
+- name: allocate space for swap
+  sudo: yes
+  shell: fallocate -l {{ homebase_swap_size }} {{ homebase_swap_location }} creates={{ homebase_swap_location }}
+  tags: swapfile
+
+- name: set permissions on swap
+  file: path={{ homebase_swap_location }} mode=600 owner=root group=root
+  tags: swapfile
+
+- name: make swap
+  sudo: yes
+  command: "mkswap {{ homebase_swap_location }}"
+  tags: swapfile
+
+- name: write swap entry in fstab
+  mount: name=none
+    src={{ homebase_swap_location }}
+    fstype=swap
+    opts=sw
+    passno=0
+    dump=0
+    state=present
+
+- name: mount swap
+  command: "swapon {{ homebase_swap_location }}"
+  when: ansible_swaptotal_mb < 1

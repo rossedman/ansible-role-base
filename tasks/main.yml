@@ -7,3 +7,6 @@
 
 - include: debian.yml
   when: ansible_os_family == 'Debian'
+
+- include: swapfile.yml
+  when: homebase_swap_file

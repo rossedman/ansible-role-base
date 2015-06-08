@@ -39,22 +39,3 @@
 - name: start ntp
   service: name=ntpd state=started
   tags: timezone
-
-- name: allocate space for swap
-  sudo: yes
-  shell: fallocate -l {{ homebase_swapsize }} /swapfile creates=/swapfile
-  tags: swapfile
-
-- name: set permissions on swap
-  file: path=/swapfile mode=600
-  tags: swapfile
-
-# - name: make swap
-#   sudo: yes
-#   shell: mkswap /swapfile && swapon /swapfile
-#   tags: swapfile
-#
-# - name: make swap boot on startup
-#   sudo: yes
-#   shell: sh -c 'echo "/swapfile none swap sw 0 0" >> /etc/fstab'
-#   tags: swapfile

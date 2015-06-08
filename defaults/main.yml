@@ -1,3 +1,5 @@
 ---
 homebase_timezone: "America/Chicago"
-homebase_swapsize: "4G"
+homebase_swap_size: "1G"
+homebase_swap_file: true
+homebase_swap_location: /swapfile
