@@ -2,7 +2,11 @@
 - name: install base
   apt: name={{ item }} state=present update_cache=yes
   with_items: "{{ general_packages }}"
+  tags: packages
 
 - name: install base shell editors
   apt: name={{ item }} state=present update_cache=yes
   with_items: "{{ shell_editors }}"
+  tags: packags, editors
+
+# configure unattended upgrades

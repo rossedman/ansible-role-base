@@ -4,6 +4,7 @@ general_packages:
   - git
   - git-core
   - gcc
+  - libselinux-python
   - make
   - unzip
   - wget

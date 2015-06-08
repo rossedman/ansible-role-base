@@ -1,22 +1,28 @@
 ---
 - name: install development tools
   yum: name="@Development tools" state=present
+  tags: packages
 
 - name: install base
   yum: name={{ item }} state=present update_cache=yes
   with_items: "{{ general_packages }}"
+  tags: packages
 
 - name: install base shell editors
   yum: name={{ item }} state=present update_cache=yes
   with_items: "{{ shell_editors }}"
+  tags: packages, editors
 
 - name: install automatic updates
   yum: name=yum-cron state=present update_cache=yes
+  tags: updates
 
 - name: add update configuration
   template: src=yum.conf dest=/etc/yum/yum.conf owner=root group=root
+  tags: updates
 
 - name: activate cron updates
   sudo: yes
   shell: chkconfig --level 345 yum-cron on
   notify: start yum cron
+  tags: updates
