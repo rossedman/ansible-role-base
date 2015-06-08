@@ -6,6 +6,3 @@
 - name: install base shell editors
   apt: name={{ item }} state=present update_cache=yes
   with_items: "{{ shell_editors }}"
-
-- name: install root ssh key
-  authorized_key: user=root key="{{ lookup('file', root_ssh_key) }}" state=present
