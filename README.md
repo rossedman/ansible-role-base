@@ -1,6 +1,6 @@
 # Ansible Base Role
 
-[![Build Status](https://travis-ci.org/rossedman/ansible-role-base.svg?branch=master)](https://travis-ci.org/rossedman/ansible-role-base)
+[![Build Status](https://travis-ci.org/rossedman/ansible-role-base.svg?branch=master&style=flat-square)](https://travis-ci.org/rossedman/ansible-role-base) [![Ansible Galaxy](http://img.shields.io/badge/ansible-galaxy--homebase-green.svg?style=flat-square)](https://galaxy.ansible.com/list#/roles/4071)
 
 This role is intended to setup base packages as well as configure swapfile, timezones, and automatic updates
 
