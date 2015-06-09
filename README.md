@@ -6,7 +6,7 @@ This role is intended to setup base packages as well as configure swapfile, time
 
 ##Requirements
 
-This role currently has only been tested with CentOS7, Ubuntu 12.04 >=, Debian Jessie and Debian Wheezy.
+This role currently has only been tested with `CentOS7`, `Ubuntu 12.04 >=`, `Debian Jessie` and `Debian Wheezy`.
 
 ##Role Variables
 
