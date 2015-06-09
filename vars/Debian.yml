@@ -6,6 +6,7 @@ general_packages:
   - git-core
   - gcc
   - make
+  - ntp
   - unattended-upgrades
   - update-notifier-common
   - unzip
