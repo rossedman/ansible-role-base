@@ -13,23 +13,8 @@
   template: src=50unattended-upgrades dest=/etc/apt/apt.conf.d/50unattended-upgrades owner=root group=root
   tags: updates
 
-- name: check current timezone
-  shell: cat /etc/timezone
-  register: current_zone
-  tags: timezone
-  ignore_errors: true
-
-- name: set timezone variables
-  copy: content="{{ homebase_timezone }}"
-        dest=/etc/timezone
-        owner=root
-        group=root
-        mode=0644
-        backup=yes
-  when: current_zone.stdout != "{{ homebase_timezone }}"
-  notify:
-    - update timezone
-  tags: timezone
+- name: check if current timezone exists
+  lineinfile: dest=/etc/timezone state=present line="{{ homebase_timezone }}"
 
 - name: enable ntp
   service: name=ntp enabled=yes
