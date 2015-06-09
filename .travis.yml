@@ -4,6 +4,11 @@ python: "2.7"
 
 env:
   - SITE=test.yml
+  - ANSIBLE_VERSION=1.4
+  - ANSIBLE_VERSION=1.5
+  - ANSIBLE_VERSION=1.6
+  - ANSIBLE_VERSION=1.7
+  - ANSIBLE_VERSION=1.8
 
 before_install:
   - sudo apt-get update -qq
@@ -11,7 +16,7 @@ before_install:
 
 install:
   # Install Ansible.
-  - pip install ansible
+  - pip install ansible==$ANSIBLE_VERSION
 
   # Add ansible.cfg to pick up roles path.
   - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
@@ -21,7 +26,7 @@ script:
   - "ansible-playbook -i tests/inventory tests/$SITE --syntax-check"
 
   # Run the role/playbook with ansible-playbook.
-  - "ansible-playbook -i tests/inventory tests/$SITE --connection=local --sudo"
+  - "ansible-playbook -i tests/inventory tests/$SITE --connection=local --sudo -vvvv"
 
   # Run the role/playbook again, checking to make sure it's idempotent.
   - >
