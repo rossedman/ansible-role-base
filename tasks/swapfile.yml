@@ -11,6 +11,7 @@
 - name: make swap
   sudo: yes
   command: "mkswap {{ homebase_swap_location }}"
+  when: ansible_swaptotal_mb < 1
   tags: swapfile
 
 - name: write swap entry in fstab

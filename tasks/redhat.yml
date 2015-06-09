@@ -21,15 +21,19 @@
   template: src=yum-cron.conf dest=/etc/yum/yum-cron.conf owner=root group=root
   tags: updates
 
-- name: activate cron updates
-  sudo: yes
-  shell: chkconfig --level 345 yum-cron on
-  notify: start yum cron
-  tags: updates
+- name: start yum cron
+  service: name=yum-cron state=started
+
+- name: check timezone
+  shell: timedatectl status | grep -ci "{{ homebase_timezone }}"
+  register: timezone_check
+  ignore_errors: true
+  tags: timezone
 
 - name: configure timezone
   sudo: yes
   shell: timedatectl set-timezone {{ homebase_timezone }}
+  when: timezone_check | failed
   tags: timezone
 
 - name: enable ntp
